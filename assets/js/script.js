@@ -15,8 +15,10 @@ fetch(requestUrl)
 }
 
 function getMealAPI (recipeID) {
-    
-  var apiURL = "https://api.edamam.com/search?app_id=d1e52e14&app_key=cd5289aff6cb193787a2baa6b251ec23&q=pizza";
+    var cuisineID = recipeID.cuisine;
+    var proteinID = recipeID.protein;
+    var restrictionID = recipeID.restriction;
+    let apiURL = "https://api.edamam.com/api/recipes/v2?type=public&q=" + proteinID + "&app_id=d1e52e14&app_key=cd5289aff6cb193787a2baa6b251ec23&health=" + restrictionID+ "&cuisineType="  + cuisineID 
   
     console.log(apiURL);
     fetch(apiURL)
@@ -24,7 +26,6 @@ function getMealAPI (recipeID) {
       return response.json();
     })
     .then(function (data) {
-    //   console.log(data);
       console.log(data.hits);
     var recipe = data;
     console.log(recipe);
@@ -212,9 +213,9 @@ var formSubmitHandler = function(event) {
       protein: proteinChoice,
       restriction:restrictionChoice,
   }
- console.log(choiceObject);
+ 
  getMealAPI(choiceObject);
- getWineParingAPI(choiceObject);
+//  getWineParingAPI(choiceObject);
  return choiceObject;
 }
 

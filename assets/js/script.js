@@ -1,11 +1,6 @@
-function getWineParingAPI (foodId) {
-//   // fetch request gets a list of all the repos for the node.js organization
-// var requestUrl = 'https://api.spoonacular.com/food/wine/pairing?food=steak&apiKey=d2130512b2d04807b0aefd43f5d70f29';
-var requestUrl = 'https://api.spoonacular.com/food/wine/pairing?food=steak&apiKey=144f5a3e0baa4bf4849131e69ddb39cf';
-// // change this to: var requestUrl = 'https://api.spoonacular.com/food/wine/pairing?food=' + foodId + 
-// //  '&apiKey=d2130512b2d04807b0aefd43f5d70f29'; 
-// // and then test it of course
-  console.log(requestUrl);
+function getWineParingAPI (foodObject) {
+  var foodId = foodObject.protein;
+var requestUrl = 'https://api.spoonacular.com/food/wine/pairing?food=' + foodId + '&apiKey=144f5a3e0baa4bf4849131e69ddb39cf'; 
 fetch(requestUrl)
   .then(function (response) {
     return response.json();
@@ -16,7 +11,6 @@ fetch(requestUrl)
     var suggestedWine = data;
     console.log(suggestedWine);
     return suggestedWine;
-
   })
 }
 
@@ -39,8 +33,7 @@ function getMealAPI (recipeID) {
     })
   }
 
-// getWineParingAPI();
-// getMealAPI();
+
 
 var fetchButton = document.getElementById("fetch3");
 fetchButton.addEventListener('click', getMealAPI); 

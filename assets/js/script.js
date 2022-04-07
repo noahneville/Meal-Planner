@@ -1,3 +1,28 @@
+function getWineParingAPI (foodId) {
+  // fetch request gets a list of all the repos for the node.js organization
+var requestUrl = 'https://api.spoonacular.com/food/wine/pairing?food=steak&apiKey=d2130512b2d04807b0aefd43f5d70f29';
+// change this to: var requestUrl = 'https://api.spoonacular.com/food/wine/pairing?food=' + foodId + 
+//  '&apiKey=d2130512b2d04807b0aefd43f5d70f29'; 
+// and then test it of course
+  console.log(requestUrl);
+fetch(requestUrl)
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    console.log(data);
+    console.log(data.pairedWines);
+    var suggestedWine = data;
+    console.log(suggestedWine);
+    return suggestedWine;
+
+  })
+}
+
+getWineParingAPI();
+
+var fetchButton = document.getElementById("fetch3");
+fetchButton.addEventListener('click', getWineParingAPI); 
 
 
 // temporarily using this API call already written out so I can test my function without needing to wait for others to finish functions that do the actual api call
@@ -81,6 +106,74 @@ async function displayRecipes () {
     }
 }
 
+let apiWineURL = "https://api.spoonacular.com/food/wine/pairing?food=chicken&apiKey=d2130512b2d04807b0aefd43f5d70f29"
+
+async function displayWines () {
+    var tempWine = await fetch(apiWineURL);
+    console.log(tempWine);
+    var Obj = await tempWine.json();
+    console.log(Obj);
+
+    let wineList = Obj.pairedWines;
+    console.log(wineList);
+    
+    let wineText = Obj.pairingText;
+    
+    let wineImg = Obj.productMatches[0].imageUrl;
+    
+    let productName = Obj.productMatches[0].title;
+    
+    let productLink = Obj.productMatches[0].link;
+    
+
+    const wineSubtitle = document.querySelector(".wine-subtitle");
+    wineSubtitle.textContent = "Wine Recommendation:";
+
+    const wineGridEl = document.querySelector("#wine-grid");
+
+    const wineContainerEl = document.createElement("div");
+    wineContainerEl.classList.add("wine-container", "col");
+        
+    var wineCardEl = document.createElement("div");
+    wineCardEl.setAttribute("class", "card");
+
+    var wineImgEl = document.createElement("img");
+    wineImgEl.setAttribute("src", wineImg);
+    wineImgEl.setAttribute("alt", "Picture of wine label");
+    wineImgEl.classList.add("card-img");
+
+    var wineTextEl = document.createElement("p");
+    wineTextEl.textContent = wineText;
+    wineTextEl.classList.add("card");
+
+    var productNameEl = document.createElement("p");
+    productNameEl.textContent = productName;
+    productNameEl.classList.add("card");
+
+    var productLinkEl = document.createElement("button");
+    productLinkEl.textContent = "Click to purchase " + productName;
+    
+
+    const wineListEl = document.createElement("ul");
+    wineListEl.classList.add("card");
+    for (var j = 0; j < wineList.length; j++) {
+        const wineEl = document.createElement("li");
+        wineEl.textContent = wineList[j].text;
+        wineListEl.appendChild(wineEl);
+    }
+
+    wineCardEl.appendChild(wineListEl);
+    wineCardEl.appendChild(wineTextEl);
+    wineCardEl.appendChild(wineImgEl);
+    wineCardEl.appendChild(productNameEl);
+    wineCardEl.appendChild(productLinkEl);
+
+    wineContainerEl.appendChild(wineCardEl);
+    wineGridEl.appendChild(wineContainerEl);
+}
+
+
+
 window.onload = function () {
-    displayRecipes();
+    displayWines();
 };

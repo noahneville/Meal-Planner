@@ -1,9 +1,10 @@
 function getWineParingAPI (foodId) {
-  // fetch request gets a list of all the repos for the node.js organization
-var requestUrl = 'https://api.spoonacular.com/food/wine/pairing?food=steak&apiKey=d2130512b2d04807b0aefd43f5d70f29';
-// change this to: var requestUrl = 'https://api.spoonacular.com/food/wine/pairing?food=' + foodId + 
-//  '&apiKey=d2130512b2d04807b0aefd43f5d70f29'; 
-// and then test it of course
+//   // fetch request gets a list of all the repos for the node.js organization
+// var requestUrl = 'https://api.spoonacular.com/food/wine/pairing?food=steak&apiKey=d2130512b2d04807b0aefd43f5d70f29';
+var requestUrl = 'https://api.spoonacular.com/food/wine/pairing?food=steak&apiKey=144f5a3e0baa4bf4849131e69ddb39cf';
+// // change this to: var requestUrl = 'https://api.spoonacular.com/food/wine/pairing?food=' + foodId + 
+// //  '&apiKey=d2130512b2d04807b0aefd43f5d70f29'; 
+// // and then test it of course
   console.log(requestUrl);
 fetch(requestUrl)
   .then(function (response) {
@@ -19,9 +20,30 @@ fetch(requestUrl)
   })
 }
 
+function getMealAPI (recipeID) {
+    
+  var apiURL = "https://api.edamam.com/search?app_id=d1e52e14&app_key=cd5289aff6cb193787a2baa6b251ec23&q=pizza";
+  
+    console.log(apiURL);
+    fetch(apiURL)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+    //   console.log(data);
+      console.log(data.hits);
+    var recipe = data;
+    console.log(recipe);
+      return recipe;
+  
+    })
+  }
+
 // getWineParingAPI();
+// getMealAPI();
 
 var fetchButton = document.getElementById("fetch3");
+fetchButton.addEventListener('click', getMealAPI); 
 fetchButton.addEventListener('click', getWineParingAPI); 
 
 
@@ -107,6 +129,7 @@ async function displayRecipes () {
 }
 
 // let apiWineURL = "https://api.spoonacular.com/food/wine/pairing?food=chicken&apiKey=d2130512b2d04807b0aefd43f5d70f29"
+let apiWineURL = "https://api.spoonacular.com/food/wine/pairing?food=chicken&apiKey=144f5a3e0baa4bf4849131e69ddb39cf"
 
 async function displayWines () {
     var tempWine = await fetch(apiWineURL);

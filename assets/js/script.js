@@ -44,9 +44,7 @@ function getMealAPI(recipeID) {
     });
 }
 
-var fetchButton = document.getElementById("fetch3");
-fetchButton.addEventListener("click", getMealAPI);
-fetchButton.addEventListener("click", getWineParingAPI);
+
 
 async function displayRecipes(Obj) {
   // var tempURL = await fetch(apiURL);
@@ -206,8 +204,9 @@ var formSubmitHandler = function (event) {
 
   getMealAPI(choiceObject);
   getWineParingAPI(choiceObject);
-  return choiceObject;
+  // return choiceObject;
 };
 
 var submitBtn = document.querySelector("#submitButton");
-submitBtn.addEventListener("click", formSubmitHandler);
+// submitBtn.addEventListener("click", formSubmitHandler);
+submitBtn.onclick = formSubmitHandler;

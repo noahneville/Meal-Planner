@@ -48,7 +48,7 @@ fetchButton.addEventListener('click', getWineParingAPI);
 
 
 // temporarily using this API call already written out so I can test my function without needing to wait for others to finish functions that do the actual api call
-let apiURL = "https://api.edamam.com/api/recipes/v2?type=public&q=chicken&app_id=d1e52e14&app_key=cd5289aff6cb193787a2baa6b251ec23&health=egg-free&cuisineType=American"
+// let apiURL = "https://api.edamam.com/api/recipes/v2?type=public&q=chicken&app_id=d1e52e14&app_key=cd5289aff6cb193787a2baa6b251ec23&health=egg-free&cuisineType=American"
 
 async function displayRecipes () {
     var tempURL = await fetch(apiURL);
@@ -199,4 +199,38 @@ async function displayWines () {
 
 window.onload = function () {
     displayWines();
+    
 };
+
+
+var formSubmitHandler = function(event) {
+  event.preventDefault();
+  var cuisineElement = document.querySelector("#cuisineSelection")
+  var proteinElement = document.querySelector("#proteinSelection")
+  var restrictionElement = document.querySelector("#restrictionSelection")
+  var cuisineChoice = cuisineElement.value;
+  var proteinChoice = proteinElement.value;
+  var restrictionChoice = restrictionElement.value;
+  console.log(cuisineChoice)
+  console.log(proteinChoice)
+  console.log(restrictionChoice)
+  var choiceObject = {
+      cuisine: cuisineChoice,
+      protein: proteinChoice,
+      restriction:restrictionChoice,
+  }
+ console.log(choiceObject);
+ getMealAPI(choiceObject);
+ getWineParingAPI(choiceObject);
+ return choiceObject;
+}
+
+var submitBtn = document.querySelector('#submitButton');
+submitBtn.addEventListener("click",formSubmitHandler);
+
+// var cusine = document.getElementById("#cuisineSelection")
+// var ID = element.getAttribute("data")
+
+
+
+

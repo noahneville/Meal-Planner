@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" 
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" 
       crossorigin="anonymous">
@@ -11,14 +13,45 @@
 </head>
 
 <body>   
-    
+  
 <header>  
-<h1>Meal Planner</h1>
-<h4>A personalized meal to fit your needs</h4>
+  <div class= "title">
+  <h1>Meal Planner</h1>
+  <P>A personalized meal to fit your needs</P>
+  </div>
 </header>  
 
+
+<div class= "Cuisine">
+  <select id= "cuisineSelection" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+   <option selected>Choose a Cuisine</option>
+   <option value="Asian">Asian</option>
+   <option value="Carribean">Carribean</option>
+   <option value="American">American</option>
+   <option value="French">French</option>
+   <option value="Italian">italian</option>Italian</option>
+   <option value="Mexican">Mexican</option>
+   <option value="Indian">Indian</option>
+  </select>
+</div>
+
+<div class= "Protein">
+  <select id= "proteinSelection" class="form-select form-select-lg" aria-label=".form-select-lg">
+    <option selected>Choose a Protein</option>
+    <option value="pork">Pork</option>
+    <option value="beef">Beef</option>
+    <option value="lamb">Lamb</option>
+    <option value="poultry">Poultry</option>
+    <option value="fish">Fish</option>
+    <option value="shellfish">Shellfish</option>
+    <option value="tofu">Tofu</option>
+  </select>
+</div>
+
+<!-- <div class= "menu">
+<form action="/action_page.php">
     <label for="food">Choose a Cuisine:</label>
-    <select name="food" id="food">
+    <select name="Cuisine" id="type">
          <option value="Asian">Asian</option>
          <option value="Carribean">Caribbean</option>
          <option value="American">American</option>
@@ -26,12 +59,15 @@
          <option value="Italian">Italian</option>
          <option value="Mexican">Mexican</option>
          <option value="Indian">Indian</option>
-         </select>
+         </select> -->
+    <!-- <br><br> -->
+    <!-- <input type="submit" value="Submit"> -->
   </form>
   
+  <!-- <form action="/action_page.php">
   
     <label for="food">Choose a Protien:</label>
-    <select name="food" id="food">
+    <select name="protein" id="animal">
       <option value="Beef">Beef</option>
       <option value="Chicken">Chicken</option>
       <option value="Fish">Fish</option>
@@ -39,12 +75,72 @@
       <option value="Beans">Beans</option>
       <option value="Quinoa">Quinoa</option>
       <option value="Boccoli">Boccoli</option>
-    </select>
-  
+    </select> -->
+    <!-- <br><br> -->
+    <!-- <input type="submit" value="Submit"> -->
   </form>
 
 
   <h1>Dietary restrictions:</h1>
+  
+
+  <div class= "Restrictions">
+    <select id= "restrictionSelection" class="form-select form-select-lg" aria-label=".form-select-lg">
+      <option selected>Choose a Dietary</option>
+      <option value="dairy-free">Dairy Free</option>
+      <option value="gluten-free">Gluten Free</option>
+      <option value="vegetarian">Vegetarian</option>
+      <option value="fish-free">Fish Free</option>
+      <option value="crustacean-free">Crustacean Free</option>
+      <option value="peanut-free">Peanut Free</option>
+    </select>
+  </div>
+  <!-- <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+    <label class="form-check-label" for="flexCheckDefault">
+      Dairy Free
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+    <label class="form-check-label" for="flexCheckChecked">
+      Gluten Free
+    </label>
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+    <label class="form-check-label" for="flexCheckDefault">
+      No Meat
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+    <label class="form-check-label" for="flexCheckChecked">
+      Fish free
+    </label>
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+    <label class="form-check-label" for="flexCheckDefault">
+      Crustacean Free
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+    <label class="form-check-label" for="flexCheckChecked">
+      Peanut free
+    </label> 
+    <br/>
+    <input type="submit" value="Submit">
+  </div> -->
+  <!-- <h1>Dietary restrictions:</h1>
+<div class="restrictions">
+ <div action="/action_page.php">
+  <input type="checkbox" id="Milk1" name="Milk1" value="Milk">
+  <label for="Milk1">Dairy Free</label><br>
+  <input type="checkbox" id="vehicle2" name="vehicle2" value="Eggs">
 
   <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
   <label for="vehicle1"> Milk</label><br>
@@ -63,12 +159,21 @@
   <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
   <br><br>
   
-<input type="submit" value="Submit">
+ <input type="submit" value="Submit">
+
+ </div>
+
+</form> -->
+<button id = "submitButton" type="submit" value="Submit">submit</button>
 
 
 <button id="fetch3">BUTTON</button>
 
   <p>Click the "Submit" button after choices are selected.</p>
+</div>
+
+<script src="assets/js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 
   <h2 class="recipe-subtitle text-center"></h2>

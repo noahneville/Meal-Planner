@@ -1,8 +1,6 @@
-var one = 1;
+
 const recipeContainerEl = document.querySelector("#recipe-container");
-
-
-
+// temporarily using this API call already written out so I can test my function without needing to wait for others to finish functions that do the actual api call
 let apiURL = "https://api.edamam.com/api/recipes/v2?type=public&q=chicken&app_id=d1e52e14&app_key=cd5289aff6cb193787a2baa6b251ec23&health=egg-free&cuisineType=American"
 
 async function displayRecipes () {

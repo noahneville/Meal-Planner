@@ -206,7 +206,7 @@ window.onload = function () {
 var formSubmitHandler = function(event) {
   event.preventDefault();
   var cuisineElement = document.querySelector("#cuisineSelection")
-  var proteinElement = document.querySelector("#cuisineSelection")
+  var proteinElement = document.querySelector("#proteinSelection")
   var restrictionElement = document.querySelector("#restrictionSelection")
   var cuisineChoice = cuisineElement.value;
   var proteinChoice = proteinElement.value;
@@ -219,7 +219,10 @@ var formSubmitHandler = function(event) {
       protein: proteinChoice,
       restriction:restrictionChoice,
   }
- console.log(choiceObject)
+ console.log(choiceObject);
+ getMealAPI(choiceObject);
+ getWineParingAPI(choiceObject);
+ return choiceObject;
 }
 
 var submitBtn = document.querySelector('#submitButton');

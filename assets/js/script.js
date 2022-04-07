@@ -123,7 +123,7 @@ async function displayRecipes () {
 }
 
 // let apiWineURL = "https://api.spoonacular.com/food/wine/pairing?food=chicken&apiKey=d2130512b2d04807b0aefd43f5d70f29"
-let apiWineURL = "https://api.spoonacular.com/food/wine/pairing?food=chicken&apiKey=144f5a3e0baa4bf4849131e69ddb39cf"
+// let apiWineURL = "https://api.spoonacular.com/food/wine/pairing?f  ood=chicken&apiKey=144f5a3e0baa4bf4849131e69ddb39cf"
 
 async function displayWines () {
     var tempWine = await fetch(apiWineURL);

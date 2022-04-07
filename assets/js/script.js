@@ -1,6 +1,6 @@
 function getWineParingAPI (foodObject) {
   var foodId = foodObject.protein;
-var requestUrl = 'https://api.spoonacular.com/food/wine/pairing?food=' + foodId + '&apiKey=144f5a3e0baa4bf4849131e69ddb39cf'; 
+var requestUrl = 'https://api.spoonacular.com/food/wine/pairing?food=' + foodId + '&apiKey=9ba115ccffc8427f9c17e1ce8f1010b0'; 
 fetch(requestUrl)
   .then(function (response) {
     return response.json();

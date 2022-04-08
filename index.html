@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <img src="" width="100%">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" 
       crossorigin="anonymous">
 
+<<<<<<< HEAD
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 
     crossorigin="anonymous"> -->
@@ -25,18 +27,23 @@
     <link rel="stylesheet" href="assets/css/style.css">
    
     <title>Meal Planner</title>
+=======
+    <link rel="stylesheet" href="./assets/css/style.css">
+   
+    <title >Meal Planner</title>
+>>>>>>> c83477ad36058d0b38f1f0bd7c069608530da41a
 </head>
 
 <body>   
   
-<header>  
-  <div class= "title">
-  <h1>Meal Planner</h1>
+<header >  
+  <div>
+  <h1 class="">Meal Planner</h1>
   <P>A personalized meal to fit your needs</P>
   </div>
 </header>  
 
-
+<div class="container">
 <div class= "Cuisine">
   <select id= "cuisineSelection" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
    <option selected>Choose a Cuisine</option>
@@ -63,41 +70,7 @@
   </select>
 </div>
 
-<!-- <div class= "menu">
-<form action="/action_page.php">
-    <label for="food">Choose a Cuisine:</label>
-    <select name="Cuisine" id="type">
-         <option value="Asian">Asian</option>
-         <option value="Carribean">Caribbean</option>
-         <option value="American">American</option>
-         <option value="French">French</option>
-         <option value="Italian">Italian</option>
-         <option value="Mexican">Mexican</option>
-         <option value="Indian">Indian</option>
-         </select> -->
-    <!-- <br><br> -->
-    <!-- <input type="submit" value="Submit"> -->
-  </form>
-  
-  <!-- <form action="/action_page.php">
-  
-    <label for="food">Choose a Protien:</label>
-    <select name="protein" id="animal">
-      <option value="Beef">Beef</option>
-      <option value="Chicken">Chicken</option>
-      <option value="Fish">Fish</option>
-      <option value="Lamb">Lamb</option>
-      <option value="Beans">Beans</option>
-      <option value="Quinoa">Quinoa</option>
-      <option value="Boccoli">Boccoli</option>
-    </select> -->
-    <!-- <br><br> -->
-    <!-- <input type="submit" value="Submit"> -->
-  </form>
-
-
   <h1>Dietary restrictions:</h1>
-  
 
   <div class= "Restrictions">
     <select id= "restrictionSelection" class="form-select form-select-lg" aria-label=".form-select-lg">
@@ -110,75 +83,7 @@
       <option value="peanut-free">Peanut Free</option>
     </select>
   </div>
-  <!-- <div class="form-check">
-    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-    <label class="form-check-label" for="flexCheckDefault">
-      Dairy Free
-    </label>
-  </div>
-  <div class="form-check">
-    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-    <label class="form-check-label" for="flexCheckChecked">
-      Gluten Free
-    </label>
-  </div>
-
-  <div class="form-check">
-    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-    <label class="form-check-label" for="flexCheckDefault">
-      No Meat
-    </label>
-  </div>
-  <div class="form-check">
-    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-    <label class="form-check-label" for="flexCheckChecked">
-      Fish free
-    </label>
-  </div>
-
-  <div class="form-check">
-    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-    <label class="form-check-label" for="flexCheckDefault">
-      Crustacean Free
-    </label>
-  </div>
-  <div class="form-check">
-    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-    <label class="form-check-label" for="flexCheckChecked">
-      Peanut free
-    </label> 
-    <br/>
-    <input type="submit" value="Submit">
-  </div> -->
-  <!-- <h1>Dietary restrictions:</h1>
-<div class="restrictions">
- <div action="/action_page.php">
-  <input type="checkbox" id="Milk1" name="Milk1" value="Milk">
-  <label for="Milk1">Dairy Free</label><br>
-  <input type="checkbox" id="vehicle2" name="vehicle2" value="Eggs">
-
-  <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-  <label for="vehicle1"> Milk</label><br>
-  <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
-  <label for="vehicle2"> Eggs</label><br>
-  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-  <label for="vehicle3"> Shelfish</label><br>
-  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-  <label for="vehicle2"> Peanut</label><br>
-  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-  <label for="vehicle2"> Fish</label><br>
-  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-  <label for="vehicle2"> Soy</label><br>
-  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-  <label for="vehicle2"> Wheat</label><br>
-  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-  <br><br>
-  
- <input type="submit" value="Submit">
-
- </div>
-
-</form> -->
+ 
 <button id = "submitButton" type="submit" value="Submit">submit</button>
 
 
@@ -186,7 +91,7 @@
 
   <p>Click the "Submit" button after choices are selected.</p>
 </div>
-
+</div>
 <script src="assets/js/script.js"></script>
 <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> -->
 

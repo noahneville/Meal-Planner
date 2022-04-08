@@ -89,6 +89,9 @@ async function displayRecipes(Obj) {
     caloriesEl.textContent = calories + " Calories Per Serving";
     caloriesEl.classList.add("card");
 
+    var saveBtnEl = document.createElement("button");
+    saveBtnEl.classList.add("card-footer", "saveBtn");
+
     var macrosEl = document.createElement("ul");
     macrosEl.classList.add("card");
 
@@ -117,6 +120,7 @@ async function displayRecipes(Obj) {
     recipeCardEl.appendChild(caloriesEl);
     recipeCardEl.appendChild(macrosEl);
     recipeCardEl.appendChild(ingredientsListEl);
+    recipeCardEl.appendChild(saveBtnEl);
 
     recipeContainerEl.appendChild(recipeCardEl);
     recipeGridEl.appendChild(recipeContainerEl);
@@ -203,10 +207,37 @@ var formSubmitHandler = function (event) {
   };
 
   getMealAPI(choiceObject);
-  getWineParingAPI(choiceObject);
+  // getWineParingAPI(choiceObject);
   // return choiceObject;
 };
 
 var submitBtn = document.querySelector("#submitButton");
-// submitBtn.addEventListener("click", formSubmitHandler);
 submitBtn.onclick = formSubmitHandler;
+
+// TODO: this is a test wine object so i dont have to keep calling the api and wasting our 150 daily api calls. Remember to restore getWineParingAPI in formhandler, and also fix the spelling of Pairing. 
+// 
+var wineTestObject = {
+  "pairedWines": [
+      "merlot",
+      "cabernet sauvignon",
+      "pinot noir"
+  ],
+  "pairingText": "Merlot, Cabernet Sauvignon, and Pinot Noir are my top picks for Beef. Beef and red wine are a classic combination. Generally, leaner cuts of beef go well with light or medium-bodied reds, such as pinot noir or merlot, while fattier cuts can handle a bold red, such as cabernet sauvingnon. One wine you could try is Maddalena Merlot. It has 4.8 out of 5 stars and a bottle costs about 19 dollars.",
+  "productMatches": [
+      {
+          "id": 491394,
+          "title": "Maddalena Merlot",
+          "description": "Maddalena Merlot offers aromas of ripe fruit and oak spice with hints of vanilla and anise. Ripe fruit flavors include bright plum and raspberry. Fruit flavors greet the palate and soft tannins frame the fresh texture that coats the mouth.",
+          "price": "$18.99",
+          "imageUrl": "https://spoonacular.com/productImages/491394-312x231.jpg",
+          "averageRating": 0.96,
+          "ratingCount": 8,
+          "score": 0.9199999999999999,
+          "link": "https://click.linksynergy.com/deeplink?id=*QCiIS6t4gA&mid=2025&murl=https%3A%2F%2Fwww.wine.com%2Fproduct%2Fmaddalena-merlot-2016%2F604022"
+      }
+  ]
+}
+
+window.onload = function() {
+displayWines(wineTestObject);
+}

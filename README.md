@@ -8,7 +8,7 @@ An app allowing users to find a recipe based on 3 criteria: cuisine type, protei
 
  # Technology 
 
-This application required the use of javascript, html, and css utilizing third party APIs to generate data. 
+This application uses HTML, CSS, and JavaScript, as well as the Bootstrap CSS library. It uses the Spoonacular and Edamam APIs.
 
 <h3>APIs:</h3>
 -  <a href="https://www.edamam.com/">Edamam</a> creates recipe options specified by user critera.
@@ -20,14 +20,13 @@ This application required the use of javascript, html, and css utilizing third p
 
 -   Easy user interface.
 -   Ability to create recipes based on a user search inputs.
--   Ability to match wines with recipes choosen from user search inputs.
--   User save menu for later.
+-   Ability to match wines with recipes chosen from user search inputs.
 
 # Status
 Completed
 
 # URL
-<a href= "">Meal Planner</a>
+[Meal Planner Live Page](https://noahneville.github.io/Meal-Planner/)
 
 # Mock Up
 The following image shows the web application's appearance and functionality:

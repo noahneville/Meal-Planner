@@ -22,13 +22,7 @@ function getMealAPI(recipeID) {
   var cuisineID = recipeID.cuisine;
   var proteinID = recipeID.protein;
   var restrictionID = recipeID.restriction;
-  let apiURL =
-    "https://api.edamam.com/api/recipes/v2?type=public&q=" +
-    proteinID +
-    "&app_id=d1e52e14&app_key=cd5289aff6cb193787a2baa6b251ec23&health=" +
-    restrictionID +
-    "&cuisineType=" +
-    cuisineID;
+  let apiURL ="https://api.edamam.com/api/recipes/v2?type=public&q=" + proteinID + "&app_id=d1e52e14&app_key=cd5289aff6cb193787a2baa6b251ec23&health=" + restrictionID + "&cuisineType=" + cuisineID;
 
   console.log(apiURL);
   fetch(apiURL)
@@ -37,14 +31,17 @@ function getMealAPI(recipeID) {
     })
     // After API response is converted into JavaScript readable information, recipe is created as an object. 
     .then(function (data) {
-<<<<<<< HEAD
-      console.log(data.hits);
+
       var recipe = data;
-      console.log(recipe);
-      displayRecipes(recipe);
-      // return recipe;
+    
+    if (!cuisineID || !proteinID){
+      window.confirm("Select at least cuisine and protein");
+      } else{
+        displayRecipes(recipe);
+        return(recipe);
+      }
     });
-}
+  }
 
 async function displayRecipes(Obj) {
   // var tempURL = await fetch(apiURL);
@@ -190,17 +187,7 @@ async function displayWines(Obj) {
   wineGridEl.appendChild(wineContainerEl);
 }
 
-=======
-    var recipe = data;
-    
-    if (!cuisineID || !proteinID){
-      window.confirm("Select at least cuisine and protein");
-      } else{
-        displayRecipes(recipe);
-        return(recipe);
-      }
-    });
-  }
+  
 var fetchButton = document.getElementById("fetch3");
 fetchButton.addEventListener('click', getMealAPI); 
 fetchButton.addEventListener('click', getWineParingAPI); 
@@ -355,7 +342,6 @@ async function displayWines () {
 //     displayWines();
     
 // };
->>>>>>> c83477ad36058d0b38f1f0bd7c069608530da41a
 
 // User's selections are received from drop down menus (in index.html) and put into three respective "xxxChoice" variables 
 var formSubmitHandler = function(event) {

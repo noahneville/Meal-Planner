@@ -89,7 +89,7 @@ async function displayRecipes(Obj) {
     caloriesEl.classList.add("card");
 
     var saveBtnEl = document.createElement("button");
-    saveBtnEl.classList.add("card-footer", "saveBtn");
+    saveBtnEl.classList.add("card-footer", "saveBtn", "btn", "btn-info");
     saveBtnEl.textContent = "Save Recipe";
 
     var macrosEl = document.createElement("ul");
@@ -188,8 +188,6 @@ async function displayWines(Obj) {
   wineContainerEl.appendChild(wineCardEl);
   wineGridEl.appendChild(wineContainerEl);
 }
-
-
 
 
 // User's selections are received from drop down menus (in index.html) and put into three respective "xxxChoice" variables 

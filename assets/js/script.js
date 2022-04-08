@@ -9,12 +9,14 @@ fetch(requestUrl)
   .then(function (data) {
 // Entire data object from the API search of wines given the selected protein is put into suggestedWine variable.
     var suggestedWine = data;
-    if (suggestedWine.pairingText = "") {
+    if (suggestedWine.pairingText === "") {
       const wineSubtitle = document.querySelector(".wine-subtitle");
       wineSubtitle.textContent = "You need something stronger than wine for this recipe!";  
     } else {
-      
-    return suggestedWine;
+      const wineGridEl = document.querySelector("#wine-grid");
+      wineGridEl.innerHTML = "";
+      displayWines(suggestedWine);
+      return suggestedWine;
     }
   })
 }
@@ -38,6 +40,8 @@ function getMealAPI(recipeID) {
     if (!cuisineID || !proteinID){
       window.confirm("Select at least cuisine and protein");
       } else{
+        const recipeGridEl = document.querySelector("#recipe-grid");
+        recipeGridEl.innerHTML = "";
         displayRecipes(recipe);
         return(recipe);
       }
@@ -45,12 +49,11 @@ function getMealAPI(recipeID) {
   }
 
 async function displayRecipes(Obj) {
-  // var tempURL = await fetch(apiURL);
-  // var Obj = await tempURL.json();
-  console.log(Obj);
+ 
   const recipeSubtitle = document.querySelector(".recipe-subtitle");
   recipeSubtitle.textContent = "Recipes Found:";
 
+  // this loops through the object we receive from the get meal API 3 times to create 3 recipes. These variables pull relevant data from that object.
   for (var i = 0; i < 3; i++) {
     var foodName = Obj.hits[i].recipe.label;
     var imgURL = Obj.hits[i].recipe.images.SMALL.url;
@@ -62,6 +65,7 @@ async function displayRecipes(Obj) {
     var protein = Obj.hits[i].recipe.digest[2].total.toFixed(1);
     var ingredients = Obj.hits[i].recipe.ingredients;
 
+    // use querySelector to generate HTML elements on the fly. 
     const recipeGridEl = document.querySelector("#recipe-grid");
 
     const recipeContainerEl = document.createElement("div");
@@ -81,18 +85,14 @@ async function displayRecipes(Obj) {
 
     var servingsEl = document.createElement("p");
     servingsEl.textContent = servings + " Servings";
-    servingsEl.classList.add("card");
+    // servingsEl.classList.add("card");
 
     var caloriesEl = document.createElement("p");
     caloriesEl.textContent = calories + " Calories Per Serving";
-    caloriesEl.classList.add("card");
-
-    var saveBtnEl = document.createElement("button");
-    saveBtnEl.classList.add("card-footer", "saveBtn", "btn", "btn-info");
-    saveBtnEl.textContent = "Save Recipe";
+    // caloriesEl.classList.add("card");
 
     var macrosEl = document.createElement("ul");
-    macrosEl.classList.add("card");
+    // macrosEl.classList.add("card");
 
     var fatEl = document.createElement("li");
     fatEl.textContent = "Fat - " + fat + "g";
@@ -101,10 +101,12 @@ async function displayRecipes(Obj) {
     var proteinEl = document.createElement("li");
     proteinEl.textContent = "Protein - " + protein + "g";
 
+    // makes a list of macro nutrients from variables extracted from object earlier
     macrosEl.appendChild(fatEl);
     macrosEl.appendChild(carbsEl);
     macrosEl.appendChild(proteinEl);
 
+    // a loop that adds ingredients to the list for however many ingredients a particular recipe has
     const ingredientsListEl = document.createElement("ul");
     ingredientsListEl.classList.add("card");
     for (var x = 0; x < ingredients.length; x++) {
@@ -113,14 +115,14 @@ async function displayRecipes(Obj) {
       ingredientsListEl.appendChild(ingredientsEl);
     }
 
+    // appends all created html to the recipe card, then appends that to the container and grid
     recipeCardEl.appendChild(foodNameEl);
     recipeCardEl.appendChild(foodImgEl);
     recipeCardEl.appendChild(servingsEl);
     recipeCardEl.appendChild(caloriesEl);
     recipeCardEl.appendChild(macrosEl);
     recipeCardEl.appendChild(ingredientsListEl);
-    recipeCardEl.appendChild(saveBtnEl);
-
+   
     recipeContainerEl.appendChild(recipeCardEl);
     recipeGridEl.appendChild(recipeContainerEl);
   }
@@ -128,10 +130,6 @@ async function displayRecipes(Obj) {
 
 async function displayWines(Obj) {
   
-  // console.log(tempWine);
-  // var Obj = await tempWine.json();
-  console.log(Obj);
-
   let wineList = Obj.pairedWines;
   console.log(wineList);
 
@@ -149,7 +147,7 @@ async function displayWines(Obj) {
   const wineGridEl = document.querySelector("#wine-grid");
 
   const wineContainerEl = document.createElement("div");
-  wineContainerEl.classList.add("wine-container", "col");
+  wineContainerEl.classList.add("wine-container", "container");
 
   var wineCardEl = document.createElement("div");
   wineCardEl.setAttribute("class", "card");
@@ -161,20 +159,24 @@ async function displayWines(Obj) {
 
   var wineTextEl = document.createElement("p");
   wineTextEl.textContent = wineText;
-  wineTextEl.classList.add("card");
+  // wineTextEl.classList.add("card");
 
   var productNameEl = document.createElement("p");
   productNameEl.textContent = productName;
-  productNameEl.classList.add("card");
+  // productNameEl.classList.add("card");
 
-  var productLinkEl = document.createElement("button");
+  var productLinkEl = document.createElement("a");
   productLinkEl.textContent = "Click to purchase " + productName;
+  productLinkEl.setAttribute("href", productLink);
+  productLinkEl.classList.add("btn", "btn-primary");
 
   const wineListEl = document.createElement("ul");
-  wineListEl.classList.add("card");
+  // wineListEl.classList.add("card");
   for (var j = 0; j < wineList.length; j++) {
     const wineEl = document.createElement("li");
-    wineEl.textContent = wineList[j].text;
+    console.log(wineList);
+    wineEl.textContent = wineList[j];
+    wineEl.classList.add("fs-3");
     wineListEl.appendChild(wineEl);
   }
 
@@ -188,10 +190,6 @@ async function displayWines(Obj) {
   wineGridEl.appendChild(wineContainerEl);
 }
 
-  
-var fetchButton = document.getElementById("fetch3");
-fetchButton.addEventListener('click', getMealAPI); 
-fetchButton.addEventListener('click', getWineParingAPI); 
 
 
 // User's selections are received from drop down menus (in index.html) and put into three respective "xxxChoice" variables 
@@ -213,38 +211,9 @@ var formSubmitHandler = function(event) {
   };
 
   getMealAPI(choiceObject);
-  // getWineParingAPI(choiceObject);
+  getWineParingAPI(choiceObject);
   // return choiceObject;
 };
 
 var submitBtn = document.querySelector("#submitButton");
 submitBtn.onclick = formSubmitHandler;
-
-// TODO: this is a test wine object so i dont have to keep calling the api and wasting our 150 daily api calls. Remember to restore getWineParingAPI in formhandler, and also fix the spelling of Pairing. 
-// 
-var wineTestObject = {
-  pairedWines: [
-      "merlot",
-      "cabernet sauvignon",
-      "pinot noir"
-  ],
-  pairingText: "Merlot, Cabernet Sauvignon, and Pinot Noir are my top picks for Beef. Beef and red wine are a classic combination. Generally, leaner cuts of beef go well with light or medium-bodied reds, such as pinot noir or merlot, while fattier cuts can handle a bold red, such as cabernet sauvingnon. One wine you could try is Maddalena Merlot. It has 4.8 out of 5 stars and a bottle costs about 19 dollars.",
-  productMatches: [
-      {
-          "id": 491394,
-          "title": "Maddalena Merlot",
-          "description": "Maddalena Merlot offers aromas of ripe fruit and oak spice with hints of vanilla and anise. Ripe fruit flavors include bright plum and raspberry. Fruit flavors greet the palate and soft tannins frame the fresh texture that coats the mouth.",
-          "price": "$18.99",
-          "imageUrl": "https://spoonacular.com/productImages/491394-312x231.jpg",
-          "averageRating": 0.96,
-          "ratingCount": 8,
-          "score": 0.9199999999999999,
-          "link": "https://click.linksynergy.com/deeplink?id=*QCiIS6t4gA&mid=2025&murl=https%3A%2F%2Fwww.wine.com%2Fproduct%2Fmaddalena-merlot-2016%2F604022"
-      }
-  ]
-}
-
-window.onload = function() {
-  console.log(wineTestObject);
-  displayWines(wineTestObject);
-}

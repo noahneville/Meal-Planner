@@ -10,7 +10,13 @@ fetch(requestUrl)
   .then(function (data) {
 // Entire data object from the API search of wines given the selected protein is put into suggestedWine variable.
     var suggestedWine = data;
+    if (suggestedWine.pairingText = "") {
+      const wineSubtitle = document.querySelector(".wine-subtitle");
+      wineSubtitle.textContent = "You need something stronger than wine for this recipe!";  
+    } else {
+      
     return suggestedWine;
+    }
   })
 }
 

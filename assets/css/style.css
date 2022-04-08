@@ -4,6 +4,7 @@ body {
     flex-direction: column;
     line-height: 1.3;
     background-color: #999999;
+    text-align: center;
   }
 
   
@@ -141,6 +142,10 @@ body {
   
   .flex-row input {
     margin-right: 2%;
+  }
+
+  .recipe-subtitle {
+    max-width: 80%;
   }
   
   /* The font style of the adjacent element changes when the given element is checked */

@@ -1,19 +1,21 @@
+//  This function finds suitable wines for the particular protein that the user has selected.  
 function getWineParingAPI (foodObject) {
   var foodId = foodObject.protein;
+//  The foodId variable is the protein that the user selected and is inserted in the call request from the API spoonacular.
 var requestUrl = 'https://api.spoonacular.com/food/wine/pairing?food=' + foodId + '&apiKey=9ba115ccffc8427f9c17e1ce8f1010b0'; 
 fetch(requestUrl)
   .then(function (response) {
     return response.json();
   })
   .then(function (data) {
-    console.log(data);
-    console.log(data.pairedWines);
+// Entire data object from the API search of wines given the selected protein is put into suggestedWine variable.
     var suggestedWine = data;
-    console.log(suggestedWine);
     return suggestedWine;
   })
 }
 
+// This function recipes retrieves information from the edamam API based upon all three inputs that the user selected: protein, 
+// dietary restrictiosns and cuisine.
 function getMealAPI (recipeID) {
     var cuisineID = recipeID.cuisine;
     var proteinID = recipeID.protein;
@@ -25,24 +27,16 @@ function getMealAPI (recipeID) {
     .then(function (response) {
       return response.json();
     })
+    // After API response is converted into JavaScript readable information, recipe is created as an object. 
     .then(function (data) {
-      console.log(data.hits);
     var recipe = data;
-    console.log(recipe);
-      return recipe;
-  
+      return recipe;  
     })
   }
-
-
 
 var fetchButton = document.getElementById("fetch3");
 fetchButton.addEventListener('click', getMealAPI); 
 fetchButton.addEventListener('click', getWineParingAPI); 
-
-
-// temporarily using this API call already written out so I can test my function without needing to wait for others to finish functions that do the actual api call
-// let apiURL = "https://api.edamam.com/api/recipes/v2?type=public&q=chicken&app_id=d1e52e14&app_key=cd5289aff6cb193787a2baa6b251ec23&health=egg-free&cuisineType=American"
 
 async function displayRecipes () {
     var tempURL = await fetch(apiURL);
@@ -122,8 +116,7 @@ async function displayRecipes () {
     }
 }
 
-// let apiWineURL = "https://api.spoonacular.com/food/wine/pairing?food=chicken&apiKey=d2130512b2d04807b0aefd43f5d70f29"
-// let apiWineURL = "https://api.spoonacular.com/food/wine/pairing?f  ood=chicken&apiKey=144f5a3e0baa4bf4849131e69ddb39cf"
+let apiWineURL = "https://api.spoonacular.com/food/wine/pairing?food=chicken&apiKey=144f5a3e0baa4bf4849131e69ddb39cf"
 
 async function displayWines () {
     var tempWine = await fetch(apiWineURL);
@@ -196,7 +189,7 @@ window.onload = function () {
     
 };
 
-
+// User's selections are received from drop down menus (in index.html) and put into three respective "xxxChoice" variables 
 var formSubmitHandler = function(event) {
   event.preventDefault();
   var cuisineElement = document.querySelector("#cuisineSelection")
@@ -205,15 +198,13 @@ var formSubmitHandler = function(event) {
   var cuisineChoice = cuisineElement.value;
   var proteinChoice = proteinElement.value;
   var restrictionChoice = restrictionElement.value;
-  console.log(cuisineChoice)
-  console.log(proteinChoice)
-  console.log(restrictionChoice)
+// Three above variables are put into object called choiceObject to be used in the two API retrievals of data
   var choiceObject = {
       cuisine: cuisineChoice,
       protein: proteinChoice,
-      restriction:restrictionChoice,
-  }
- 
+      restriction: restrictionChoice,
+  } 
+// calls edamam and spoonacular API's with choiceObject  
  getMealAPI(choiceObject);
 //  getWineParingAPI(choiceObject);
  return choiceObject;

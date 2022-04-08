@@ -30,18 +30,23 @@ function getMealAPI (recipeID) {
     // After API response is converted into JavaScript readable information, recipe is created as an object. 
     .then(function (data) {
     var recipe = data;
-      return recipe;  
-    })
+    
+    if (!cuisineID || !proteinID){
+      window.confirm("Select at least cuisine and protein");
+      } else{
+        displayRecipes(recipe);
+        return(recipe);
+      }
+    });
   }
-
 var fetchButton = document.getElementById("fetch3");
 fetchButton.addEventListener('click', getMealAPI); 
 fetchButton.addEventListener('click', getWineParingAPI); 
 
 async function displayRecipes () {
-    var tempURL = await fetch(apiURL);
-    var Obj = await tempURL.json();
-    console.log(Obj);
+    // var tempURL = await fetch(apiURL);
+    // var Obj = await tempURL.json();
+    // console.log(Obj);
     const recipeSubtitle = document.querySelector(".recipe-subtitle");
     recipeSubtitle.textContent = "Recipes Found:";
 
@@ -116,13 +121,13 @@ async function displayRecipes () {
     }
 }
 
-let apiWineURL = "https://api.spoonacular.com/food/wine/pairing?food=chicken&apiKey=144f5a3e0baa4bf4849131e69ddb39cf"
+// let apiWineURL = "https://api.spoonacular.com/food/wine/pairing?food=chicken&apiKey=144f5a3e0baa4bf4849131e69ddb39cf"
 
 async function displayWines () {
-    var tempWine = await fetch(apiWineURL);
-    console.log(tempWine);
-    var Obj = await tempWine.json();
-    console.log(Obj);
+    // var tempWine = await fetch(apiWineURL);
+    // console.log(tempWine);
+    // var Obj = await tempWine.json();
+    // console.log(Obj);
 
     let wineList = Obj.pairedWines;
     console.log(wineList);
@@ -184,10 +189,10 @@ async function displayWines () {
 
 
 
-window.onload = function () {
-    displayWines();
+// window.onload = function () {
+//     displayWines();
     
-};
+// };
 
 // User's selections are received from drop down menus (in index.html) and put into three respective "xxxChoice" variables 
 var formSubmitHandler = function(event) {

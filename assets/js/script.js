@@ -1,21 +1,22 @@
 function getWineParingAPI(foodObject) {
   var foodId = foodObject.protein;
-  var requestUrl =
-    "https://api.spoonacular.com/food/wine/pairing?food=" +
-    foodId +
-    "&apiKey=9ba115ccffc8427f9c17e1ce8f1010b0";
-  fetch(requestUrl)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      console.log(data);
-      console.log(data.pairedWines);
-      var suggestedWine = data;
-      console.log(suggestedWine);
-      displayWines(suggestedWine);
-      // return suggestedWine;
-    });
+//  The foodId variable is the protein that the user selected and is inserted in the call request from the API spoonacular.
+var requestUrl = 'https://api.spoonacular.com/food/wine/pairing?food=' + foodId + '&apiKey=9ba115ccffc8427f9c17e1ce8f1010b0'; 
+fetch(requestUrl)
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+// Entire data object from the API search of wines given the selected protein is put into suggestedWine variable.
+    var suggestedWine = data;
+    if (suggestedWine.pairingText = "") {
+      const wineSubtitle = document.querySelector(".wine-subtitle");
+      wineSubtitle.textContent = "You need something stronger than wine for this recipe!";  
+    } else {
+      
+    return suggestedWine;
+    }
+  })
 }
 
 function getMealAPI(recipeID) {

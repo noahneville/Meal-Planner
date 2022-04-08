@@ -1,11 +1,7 @@
 {
-    "pairedWines": [
-        "merlot",
-        "cabernet sauvignon",
-        "pinot noir"
-    ],
-    "pairingText": "Merlot, Cabernet Sauvignon, and Pinot Noir are my top picks for Beef. Beef and red wine are a classic combination. Generally, leaner cuts of beef go well with light or medium-bodied reds, such as pinot noir or merlot, while fattier cuts can handle a bold red, such as cabernet sauvingnon. One wine you could try is Maddalena Merlot. It has 4.8 out of 5 stars and a bottle costs about 19 dollars.",
-    "productMatches": [
+    pairedWines: ["merlot", "cabernet sauvignon","pinot noir"],
+    pairingText: "Merlot, Cabernet Sauvignon, and Pinot Noir are my top picks for Beef. Beef and red wine are a classic combination. Generally, leaner cuts of beef go well with light or medium-bodied reds, such as pinot noir or merlot, while fattier cuts can handle a bold red, such as cabernet sauvingnon. One wine you could try is Maddalena Merlot. It has 4.8 out of 5 stars and a bottle costs about 19 dollars.",
+    productMatches: [
         {
             "id": 491394,
             "title": "Maddalena Merlot",
